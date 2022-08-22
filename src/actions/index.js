@@ -23,3 +23,30 @@ export const heroesDelete = (id) => {
         payload: id
     }
 }
+
+export const filtersLoaded = (data) => {
+    return {
+        type: 'FILTER__LOADED',
+        payload: data
+    }
+}   
+
+export const addNewHero = (data) => {
+    return {
+        type: 'ADD_HERO',
+        payload: data
+    }
+}
+
+export const filterSet = (option) => {
+    return {
+        type: 'FILTER_SET',
+        payload: option
+    }
+}
+
+export const filterError = () => {
+    return {
+        type: 'FILTER_EROR',
+    }
+}

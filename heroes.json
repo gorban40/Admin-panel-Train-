@@ -1,29 +1,49 @@
 {
-    "heroes": [
-        {
-            "id": 1,
-            "name": "Первый герой",
-            "description": "Первый герой в рейтинге!",
-            "element": "fire"
-        },
-        {
-            "id": 2,
-            "name": "Неизвестный герой",
-            "description": "Скрывающийся в тени",
-            "element": "wind"
-        },
-        {
-            "id": 3,
-            "name": "Морской герой",
-            "description": "Как аквамен, но не из DC",
-            "element": "water"
-        }
-    ],
-    "filters": [
-        "all",
-        "fire",
-        "water",
-        "wind",
-        "earth"
-    ]
+  "heroes": [
+    {
+      "id": "3bbeb0c3-76e2-420a-b0a5-16dfa19b6180",
+      "name": "Thor",
+      "description": "12341324",
+      "element": "fire"
+    },
+    {
+      "id": "7bf14762-3b48-431f-b83f-3a55ff04962c",
+      "name": "Thor",
+      "description": "134123",
+      "element": "all"
+    },
+    {
+      "id": "fa254760-5806-4e9f-90dd-b456e076f4be",
+      "name": "Thor",
+      "description": "1234",
+      "element": "wind"
+    }
+  ],
+  "filters": [
+    {
+      "name": "all",
+      "classNama": "btn-outline-dark",
+      "label": "all"
+    },
+    {
+      "name": "fire",
+      "classNama": "btn-danger",
+      "label": "fire"
+    },
+    {
+      "name": "water",
+      "classNama": "btn-primary",
+      "label": "water"
+    },
+    {
+      "name": "wind",
+      "classNama": "btn-success",
+      "label": "wind"
+    },
+    {
+      "name": "earth",
+      "classNama": "btn-secondary",
+      "label": "earth"
+    }
+  ]
 }
