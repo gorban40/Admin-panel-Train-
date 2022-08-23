@@ -5,6 +5,18 @@
       "name": "Thor",
       "description": "1234",
       "element": "wind"
+    },
+    {
+      "id": "23204cdc-a638-4dbc-a9b3-c0e50c97a45d",
+      "name": "Thor",
+      "description": "",
+      "element": "earth"
+    },
+    {
+      "id": "e6fbad05-952e-45ce-b88f-1805c81eb1ec",
+      "name": "Misha Gorban",
+      "description": "Powerfull",
+      "element": "all"
     }
   ],
   "filters": [

@@ -2,10 +2,9 @@ import { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from "react";
 import { useHttp } from "../../hooks/http.hook";
-import { filtersLoaded, addNewHero } from '../../actions';
+import { addNewHero } from '../../actions';
 import { v4 as uuidv4 } from 'uuid';
-
-
+import {fetchFilters} from '../../actions/index'
 // Задача для этого компонента:
 // Реализовать создание нового героя с введенными данными. Он должен попадать
 // в общее состояние и отображаться в списке + фильтроваться
@@ -17,13 +16,12 @@ const HeroesAddForm = () => {
     const [heroText, setHeroText] = useState('');
     const [heroElement, setHeroElement] = useState('');
 
-    const {filters} = useSelector(state => state.filters);
+    const {filters, filterStatusLoading} = useSelector(state => state.filters);
     const dispatch = useDispatch();
     const {request} = useHttp();
 
     useEffect(() => {
-        request("http://localhost:3001/filters")
-            .then(data => dispatch(filtersLoaded(data)))
+        dispatch(fetchFilters(request));
     }, [])
 
     const onSubmitForm = (event) => {
@@ -46,19 +44,29 @@ const HeroesAddForm = () => {
             .catch(console.log('something was wrong'));
     }
 
+    const renderFilters = (filters, statusFliter) => {
+        if (statusFliter === 'loading') {
+            return <option>Loading elements</option>
+        } else if (statusFliter === 'error') {
+            return <option>Error loading</option>
+        }
 
+        if (filters && filters.length > 0) {
+            return filters.map(item => {
 
-    const options = filters.map(item => {
-        return (
-            <option key={() => uuidv4()}>{item.label}</option>
-        )
-    });
+                if (item.name === 'all') return;
+
+                return (
+                    <option key={() => uuidv4()}>{item.label}</option>
+                )
+            });
+        }
+    }
     return (
         <form className="border p-4 shadow-lg rounded">
             <div className="mb-3">
                 <label htmlFor="name" className="form-label fs-4">Имя нового героя</label>
                 <input 
-
                     required
                     type="text" 
                     name="name" 
@@ -92,7 +100,7 @@ const HeroesAddForm = () => {
                     value={heroElement}
                     onChange={(e) => setHeroElement(e.target.value)}>
                     <option >Я владею элементом...</option>
-                    {options}
+                    {renderFilters(filters,filterStatusLoading)}
                 </select>
             </div>
 

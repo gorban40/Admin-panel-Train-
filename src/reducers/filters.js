@@ -1,7 +1,7 @@
 const initialState = {
     filters: [],
     activeFilter: 'all',
-    filterStatusError: 'none'
+    filterStatusLoading: 'idle'
 }
 
 const filters = (state = initialState, action) => {
@@ -9,7 +9,13 @@ const filters = (state = initialState, action) => {
         case 'FILTER__LOADED':
             return {
                 ...state,
-                filters: action.payload
+                filters: action.payload,
+                filterStatusLoading: 'idle'
+            }
+        case 'FILTER__FETCHING':
+            return {
+                ...state,
+                filterStatusLoading: 'loading'
             }
         case 'FILTER_SET':
             return {
@@ -19,7 +25,7 @@ const filters = (state = initialState, action) => {
         case 'FILTER_EROR':
             return {
                 ...state,
-                filterStatusError: 'error'
+                filterStatusLoading: 'error'
             }
         default: return state
     }
