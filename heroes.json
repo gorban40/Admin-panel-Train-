@@ -1,18 +1,6 @@
 {
   "heroes": [
     {
-      "id": "3bbeb0c3-76e2-420a-b0a5-16dfa19b6180",
-      "name": "Thor",
-      "description": "12341324",
-      "element": "fire"
-    },
-    {
-      "id": "7bf14762-3b48-431f-b83f-3a55ff04962c",
-      "name": "Thor",
-      "description": "134123",
-      "element": "all"
-    },
-    {
       "id": "fa254760-5806-4e9f-90dd-b456e076f4be",
       "name": "Thor",
       "description": "1234",
