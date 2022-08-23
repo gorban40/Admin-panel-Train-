@@ -2,9 +2,10 @@ import { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from "react";
 import { useHttp } from "../../hooks/http.hook";
-import { addNewHero } from '../../actions';
+import {heroesAdd} from '../heroesList/heroesSlice';
+import {fetchFilters} from '../../actions/index';
 import { v4 as uuidv4 } from 'uuid';
-import {fetchFilters} from '../../actions/index'
+
 // Задача для этого компонента:
 // Реализовать создание нового героя с введенными данными. Он должен попадать
 // в общее состояние и отображаться в списке + фильтроваться
@@ -40,7 +41,7 @@ const HeroesAddForm = () => {
         }
         request("http://localhost:3001/heroes", "POST", JSON.stringify(newHero))
             .then(res => console.log(res, 'Отправка успешна'))
-            .then(dispatch(addNewHero(newHero)))
+            .then(dispatch(heroesAdd(newHero)))
             .catch(console.log('something was wrong'));
     }
 
@@ -55,9 +56,8 @@ const HeroesAddForm = () => {
             return filters.map(item => {
 
                 if (item.name === 'all') return;
-
                 return (
-                    <option key={() => uuidv4()}>{item.label}</option>
+                    <option key={item.label}>{item.label}</option>
                 )
             });
         }

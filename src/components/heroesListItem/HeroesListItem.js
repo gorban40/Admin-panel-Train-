@@ -1,7 +1,7 @@
 import { useDispatch} from 'react-redux';
 import { useHttp } from '../../hooks/http.hook';
 
-import { heroesDelete } from '../../actions';
+import { heroesDelete } from '../heroesList/heroesSlice';
 
 const HeroesListItem = ({name, description, element, id}) => {
 

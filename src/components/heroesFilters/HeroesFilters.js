@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { filterSet } from '../../actions';
-import { v4 as uuidv4 } from 'uuid';
+import { filterSet } from './filterSlice';
 import classNames from 'classnames';
 
 const HeroesFilters = () => {
@@ -22,7 +21,7 @@ const HeroesFilters = () => {
                 }); 
 
                 return (
-                    <button onClick={() => dispatch(filterSet(item.name))} className={btnClass} key={() => uuidv4()}>{item.label}</button>
+                    <button onClick={() => dispatch(filterSet(item.name))} className={btnClass} key={item.label}>{item.label}</button>
                 )
             });
         }
