@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from "react";
 import { useHttp } from "../../hooks/http.hook";
 import {heroesAdd} from '../heroesList/heroesSlice';
-import {fetchFilters} from '../../actions/index';
+import {fetchFilters} from '../heroesFilters/filterSlice';
 import { v4 as uuidv4 } from 'uuid';
 
 // Задача для этого компонента:
@@ -22,7 +22,7 @@ const HeroesAddForm = () => {
     const {request} = useHttp();
 
     useEffect(() => {
-        dispatch(fetchFilters(request));
+        dispatch(fetchFilters());
     }, [])
 
     const onSubmitForm = (event) => {
