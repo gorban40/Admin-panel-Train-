@@ -5,10 +5,8 @@ import { useHttp } from "../../hooks/http.hook";
 import {heroesAdd} from '../heroesList/heroesSlice';
 import {fetchFilters} from '../heroesFilters/filterSlice';
 import { v4 as uuidv4 } from 'uuid';
-
-// Задача для этого компонента:
-// Реализовать создание нового героя с введенными данными. Он должен попадать
-// в общее состояние и отображаться в списке + фильтроваться
+import { selectAll } from '../heroesFilters/filterSlice';
+import store from '../../store/index';
 
 
 const HeroesAddForm = () => {
@@ -17,12 +15,14 @@ const HeroesAddForm = () => {
     const [heroText, setHeroText] = useState('');
     const [heroElement, setHeroElement] = useState('');
 
-    const {filters, filterStatusLoading} = useSelector(state => state.filters);
+    const {filterStatusLoading} = useSelector(state => state.filters);
+    const filters = selectAll(store.getState())
     const dispatch = useDispatch();
     const {request} = useHttp();
 
     useEffect(() => {
         dispatch(fetchFilters());
+        // eslint-disable-next-line
     }, [])
 
     const onSubmitForm = (event) => {
@@ -54,8 +54,9 @@ const HeroesAddForm = () => {
 
         if (filters && filters.length > 0) {
             return filters.map(item => {
-
+                // eslint-disable-next-line
                 if (item.name === 'all') return;
+
                 return (
                     <option key={item.label}>{item.label}</option>
                 )

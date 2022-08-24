@@ -1,52 +1,32 @@
 {
-  "heroes": [
-    {
-      "id": "3d19399d-9af2-4dd2-a008-80b0731fb2bc",
-      "name": "Thor",
-      "description": "13124",
-      "element": "wind"
-    },
-    {
-      "id": "1e3840ad-5292-44d3-a9dc-592824b0f92b",
-      "name": "12341234",
-      "description": "3241234",
-      "element": "water"
-    },
-    {
-      "id": "203ffa85-660c-44eb-92da-da89a24d0ffa",
-      "name": "",
-      "description": "",
-      "element": ""
-    },
-    {
-      "id": "351138df-1df3-4ea3-8803-ced85f85b202",
-      "name": "",
-      "description": "",
-      "element": "water"
-    }
-  ],
+  "heroes": [],
   "filters": [
     {
+      "id": "1",
       "name": "all",
       "classNama": "btn-outline-dark",
       "label": "all"
     },
     {
+      "id": "2",
       "name": "fire",
       "classNama": "btn-danger",
       "label": "fire"
     },
     {
+      "id": "3",
       "name": "water",
       "classNama": "btn-primary",
       "label": "water"
     },
     {
+      "id": "4",
       "name": "wind",
       "classNama": "btn-success",
       "label": "wind"
     },
     {
+      "id": "5",
       "name": "earth",
       "classNama": "btn-secondary",
       "label": "earth"
