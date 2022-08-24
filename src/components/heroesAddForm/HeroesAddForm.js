@@ -1,16 +1,21 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from "react";
-import { useHttp } from "../../hooks/http.hook";
-import {heroesAdd} from '../heroesList/heroesSlice';
-import {fetchFilters} from '../heroesFilters/filterSlice';
-import { v4 as uuidv4 } from 'uuid';
+//import { useHttp } from "../../hooks/http.hook";
+import { useCreateHeroMutation } from '../../api/apiSlice'
+
+//import {heroesAdd} from '../heroesList/heroesSlice';
 import { selectAll } from '../heroesFilters/filterSlice';
+import {fetchFilters} from '../heroesFilters/filterSlice';
+
+import { v4 as uuidv4 } from 'uuid';
+
 import store from '../../store/index';
 
 
 const HeroesAddForm = () => {
     
+    const [createHero, {isLoading}] = useCreateHeroMutation();
+
     const [heroName, setHeroName] = useState('');
     const [heroText, setHeroText] = useState('');
     const [heroElement, setHeroElement] = useState('');
@@ -18,7 +23,7 @@ const HeroesAddForm = () => {
     const {filterStatusLoading} = useSelector(state => state.filters);
     const filters = selectAll(store.getState())
     const dispatch = useDispatch();
-    const {request} = useHttp();
+    //const {request} = useHttp();
 
     useEffect(() => {
         dispatch(fetchFilters());
@@ -39,10 +44,11 @@ const HeroesAddForm = () => {
             description: description,
             element: element
         }
-        request("http://localhost:3001/heroes", "POST", JSON.stringify(newHero))
-            .then(res => console.log(res, 'Отправка успешна'))
-            .then(dispatch(heroesAdd(newHero)))
-            .catch(console.log('something was wrong'));
+        createHero(newHero).unwrap();
+        // request("http://localhost:3001/heroes", "POST", JSON.stringify(newHero))
+        //     .then(res => console.log(res, 'Отправка успешна'))
+        //     .then(dispatch(heroesAdd(newHero)))
+        //     .catch(console.log('something was wrong'));
     }
 
     const renderFilters = (filters, statusFliter) => {

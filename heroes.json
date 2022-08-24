@@ -1,5 +1,18 @@
 {
-  "heroes": [],
+  "heroes": [
+    {
+      "id": "4f3f3218-de5f-45f5-959e-dcdfc6dc0df4",
+      "name": "Thor",
+      "description": "2134",
+      "element": "water"
+    },
+    {
+      "id": "29adf4e1-8bdc-4263-b62f-c9df064417e8",
+      "name": "Thor",
+      "description": "3214312",
+      "element": "water"
+    }
+  ],
   "filters": [
     {
       "id": "1",
